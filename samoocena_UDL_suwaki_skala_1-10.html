@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UDL – samoocena kompetencji</title>
+<style>
+:root{color-scheme:light;--red:#c40000;--ink:#171717;--muted:#626262;--line:#d9d9d9;--paper:#fff;--bg:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Segoe UI",sans-serif;background:#fff;color:var(--ink);line-height:1.65}
+.wrap{max-width:880px;margin:0 auto;padding:32px 20px 42px}
+header{background:#fff;color:var(--ink);padding:0 0 24px;border-bottom:3px solid var(--red)}
+.kicker{text-transform:uppercase;font-size:.78rem;letter-spacing:.09em;font-weight:700;color:var(--red);margin:0 0 12px}
+h1{font-size:clamp(1.55rem,3vw,2rem);line-height:1.25;margin:0 0 12px;font-weight:700}
+header p{margin:0;max-width:750px;color:var(--ink);font-size:1.03rem}
+.card{background:#fff;border:1px solid var(--line);border-left:5px solid var(--red);margin-top:20px;padding:24px 26px}
+.row{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.num{color:var(--red);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:8px}
+h2{font-size:1.12rem;margin:0;font-weight:700;line-height:1.45}
+.value{border:1px solid var(--red);background:#fff;color:var(--red);min-width:78px;padding:6px 10px;text-align:center;font-size:1.25rem;font-weight:700;white-space:nowrap}
+.value small{font-size:.75rem}.rangebox{margin-top:24px}
+.slider{width:100%;accent-color:var(--red);cursor:pointer;height:30px}
+.scale{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:.83rem;margin-top:5px}
+.scale span:last-child{text-align:right}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 0}
+.button{font:inherit;font-weight:700;cursor:pointer;padding:11px 20px;border:2px solid var(--red);border-radius:0}
+.primary{background:var(--red);color:white}.secondary{background:white;color:var(--red)}
+.button:hover{filter:brightness(.92)}.button:focus-visible,.slider:focus-visible{outline:3px solid #111;outline-offset:3px}
+.summary{margin-top:24px;padding:23px 26px;border:2px solid var(--red);background:#fff;color:var(--ink)}
+.summary[hidden]{display:none}.summary h2{font-size:1.35rem;margin-bottom:8px;color:var(--red)}
+.summary p{color:var(--ink);margin:7px 0}.result{margin-top:12px;background:#fafafa;padding:16px 18px;border-left:4px solid var(--red)}
+.result strong{color:var(--red)}.notice{font-size:.86rem;color:var(--muted);margin:18px 2px 0}
+.footer{font-size:.8rem;color:var(--muted);margin:10px 2px 0}
+@media(max-width:550px){.wrap{padding:20px 14px 32px}.card{padding:20px 16px}.row{gap:10px}.value{min-width:66px}.scale{font-size:.75rem}}
+@media print{.actions{display:none}.card,.summary,header{break-inside:avoid}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header><p class="kicker">Universal Design for Learning · UDL</p><h1>Sprawdź, jak oceniasz swoje kompetencje</h1><p>Przesuń suwaki, aby określić swój obecny poziom wiedzy i umiejętności. Nie ma tu dobrych ani złych odpowiedzi. To ćwiczenie służy autorefleksji, a nie ocenianiu.</p></header>
+<form id="selfAssessment">
+<section class="card" aria-labelledby="q1title"><div class="num">Obszar 01 · Wiedza</div><div class="row"><h2 id="q1title">Jak oceniasz swoją znajomość podstawowych zasad UDL?</h2><output class="value" for="q1" id="v1">5 <small>/ 10</small></output></div><div class="rangebox"><input class="slider" id="q1" name="q1" type="range" min="1" max="10" step="1" value="5" aria-labelledby="q1title" aria-describedby="q1ends"><div class="scale" id="q1ends"><span>1 · Nie znam tych zasad</span><span>10 · Znam je bardzo dobrze</span></div></div></section>
+<section class="card" aria-labelledby="q2title"><div class="num">Obszar 02 · Rozpoznawanie barier</div><div class="row"><h2 id="q2title">W jakim stopniu potrafisz identyfikować bariery w uczeniu się?</h2><output class="value" for="q2" id="v2">5 <small>/ 10</small></output></div><div class="rangebox"><input class="slider" id="q2" name="q2" type="range" min="1" max="10" step="1" value="5" aria-labelledby="q2title" aria-describedby="q2ends"><div class="scale" id="q2ends"><span>1 · Jeszcze nie potrafię</span><span>10 · Potrafię samodzielnie</span></div></div></section>
+<section class="card" aria-labelledby="q3title"><div class="num">Obszar 03 · Projektowanie</div><div class="row"><h2 id="q3title">Jak oceniasz swoją umiejętność projektowania zajęć zgodnie z UDL?</h2><output class="value" for="q3" id="v3">5 <small>/ 10</small></output></div><div class="rangebox"><input class="slider" id="q3" name="q3" type="range" min="1" max="10" step="1" value="5" aria-labelledby="q3title" aria-describedby="q3ends"><div class="scale" id="q3ends"><span>1 · Nie mam jeszcze doświadczenia</span><span>10 · Stosuję UDL swobodnie</span></div></div></section>
+<div class="actions"><button class="button primary" type="submit">Pokaż moje podsumowanie</button><button class="button secondary" type="reset">Rozpocznij od nowa</button></div>
+</form>
+<section class="summary" id="summary" aria-live="polite" aria-labelledby="summaryTitle" hidden tabindex="-1"><h2 id="summaryTitle">Twoja samoocena</h2><p>Tak przedstawiają się wybrane przez Ciebie poziomy:</p><div class="result" id="summaryDetails"></div><p>To punkt wyjścia do dalszej nauki. Wróć do tych pytań po ukończeniu kursu i zastanów się, co się zmieniło.</p></section>
+<p class="notice">Wskazówka: suwak można obsługiwać myszą, dotykiem lub klawiszami strzałek po ustawieniu na nim fokusu.</p>
+<p class="footer">Wyniki pozostają wyłącznie na tej stronie. Ta wersja nie wysyła odpowiedzi na serwer ani nie zapisuje ich w dzienniku Moodle.</p>
+</main>
+<script>
+(()=>{const form=document.getElementById('selfAssessment');const summary=document.getElementById('summary');const labels=['Znajomość zasad UDL','Rozpoznawanie barier','Projektowanie zajęć zgodnie z UDL'];const sliders=[...form.querySelectorAll('input[type=range]')];function update(){sliders.forEach((s,i)=>{document.getElementById('v'+(i+1)).innerHTML=s.value+' <small>/ 10</small>'});if(!summary.hidden)show(false)}function show(focus){const vals=sliders.map(s=>Number(s.value));document.getElementById('summaryDetails').replaceChildren(...vals.map((v,i)=>{let p=document.createElement('p');const name=document.createElement('span');name.textContent=labels[i]+': ';const strong=document.createElement('strong');strong.textContent=v+' / 10';p.append(name,strong);return p}));summary.hidden=false;if(focus)summary.focus()}sliders.forEach(s=>s.addEventListener('input',update));form.addEventListener('submit',e=>{e.preventDefault();show(true)});form.addEventListener('reset',()=>{setTimeout(()=>{summary.hidden=true;update()},0)});update()})();
+</script>
+</body>
+</html>
